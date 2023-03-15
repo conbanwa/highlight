@@ -6,52 +6,52 @@ import (
 )
 
 func Red(str string) string {
-	return dye(0, "31", str)
+	return dye(0, "red", str)
 }
 func Green(str string) string {
-	return dye(0, "32", str)
+	return dye(0, "green", str)
 }
 func Yellow(str string) string {
-	return dye(0, "33", str)
+	return dye(0, "yellow", str)
 }
 func Blue(str string) string {
-	return dye(0, "34", str)
+	return dye(0, "blue", str)
 }
 func Magenta(str string) string {
-	return dye(0, "35", str)
+	return dye(0, "magenta", str)
 }
 func Cyan(str string) string {
-	return dye(0, "36", str)
+	return dye(0, "cyan", str)
 }
 func White(str string) string {
-	return dye(0, "37", str)
+	return dye(0, "white", str)
 }
 func Black(str string) string {
-	return dye(0, "30", str)
+	return dye(0, "black", str)
 }
 func RED(str string) string {
-	return dye(1, "31", str)
+	return dye(1, "red", str)
 }
-func GRE(str string) string {
-	return dye(1, "32", str)
+func GREEN(str string) string {
+	return dye(1, "green", str)
 }
-func YEL(str string) string {
-	return dye(1, "33", str)
+func YELLOW(str string) string {
+	return dye(1, "yellow", str)
 }
-func BLU(str string) string {
-	return dye(1, "34", str)
+func BLUE(str string) string {
+	return dye(1, "blue", str)
 }
-func MAG(str string) string {
-	return dye(1, "35", str)
+func MAGENTA(str string) string {
+	return dye(1, "magenta", str)
 }
-func CYA(str string) string {
-	return dye(1, "36", str)
+func CYAN(str string) string {
+	return dye(1, "cyan", str)
 }
-func WHI(str string) string {
-	return dye(1, "37", str)
+func WHITE(str string) string {
+	return dye(1, "white", str)
 }
-func BLA(str string) string {
-	return dye(1, "30", str)
+func BLACK(str string) string {
+	return dye(1, "black", str)
 }
 
 func dye(highlight int, color string, args ...interface{}) string {
@@ -70,17 +70,19 @@ func dye(highlight int, color string, args ...interface{}) string {
 		n = "35"
 	case "cyan":
 		n = "36"
+	case "white":
+		n = "37"
 	default:
 		n = "33"
 	}
-	return fmt.Sprintf("\033["+strconv.Itoa(highlight)+";"+n+";40m%s\033[0m", str)
+	return fmt.Sprintf("\033[%s;%sm%s\033[0m", strconv.Itoa(highlight), n, str)
 }
 
 func Concat(args ...interface{}) string {
-	return Join(" ", args...)
+	return join(" ", args...)
 }
 
-func Join(separator string, args ...interface{}) (str string) {
+func join(separator string, args ...interface{}) (str string) {
 	for i, param := range args {
 		if i == len(args)-1 {
 			separator = ""
