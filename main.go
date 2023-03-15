@@ -1,7 +1,7 @@
 package highlight
 
-// @version 0.0.2
-// @license.name last updated at 2023/3/16 00:22:08
+// @version 0.0.3
+// @license.name last updated at 2023/3/16 00:26:29
 
 import (
 	"fmt"
@@ -11,8 +11,8 @@ import (
 type font int
 
 const (
-	standard font = iota
-	bold
+	Normal font = iota
+	Bold
 	Light
 	Italic
 	Underline
@@ -114,7 +114,6 @@ func WHITEf(format string, args ...interface{}) string {
 func BLACKf(format string, args ...interface{}) string {
 	return dye(3, "black", fmt.Sprintf(format, args...))
 }
-
 func dye(f font, color string, args ...interface{}) string {
 	str := Concat(args...)
 	n := "33"
